@@ -1,0 +1,16 @@
+{
+    "name": "yoan77/algo_lab",
+    "version": "1.0.0", 
+    "description": "my-package",
+    "autoload": {
+        "psr-4": {
+            "Yoan77\\AlgoLab\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yoan"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: algo_lab
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_DATABASE: algo_lab
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - moren_net
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: algo_db 
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - moren_net
+ 
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-moren
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    networks:
+      - moren_net
+
+
+volumes:
+  db_data:
+
+networks:
+  moren_net:
+    driver: bridge
