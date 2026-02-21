@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Yoan77\\AlgoLab\\' => array($baseDir . '/src'),
+    'Yoan77\\AutoLib\\' => array($baseDir . '/src'),
 );

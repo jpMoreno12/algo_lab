@@ -1,16 +1,18 @@
 {
-    "name": "yoan77/algo_lab",
-    "version": "1.0.0", 
-    "description": "my-package",
+    "name": "yoan77/auto-lib",
+    "description": "autoral",
+    "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Yoan77\\AlgoLab\\": "src/"
+            "Yoan77\\AutoLib\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "yoan"
+            "name": "yoan77"
         }
     ],
+    "minimum-stability": "stable",
     "require": {}
 }
