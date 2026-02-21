@@ -1,0 +1,9 @@
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+use Database\Database;
+
+$teste = new Database();
+
+$teste->teste();
+
+
