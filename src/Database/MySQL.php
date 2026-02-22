@@ -2,7 +2,7 @@
 
 namespace Yoan77\AutoLib\Database;
 
-use mysqli;
+use Exception;
 
 class MySQL
 {
@@ -14,6 +14,8 @@ class MySQL
 
     public string $dbName;
 
+    public $conn;
+
     public function __construct($serverName, $userName, $password, $dbName)
     {
         $this->serverName = $serverName;
@@ -24,16 +26,18 @@ class MySQL
 
     public function connect()
     {
-        $conn = \mysqli_connect($this->serverName, $this->userName, $this->password, $this->dbName);
+        $this->conn = \mysqli_connect($this->serverName, $this->userName, $this->password, $this->dbName);
 
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
+        if (!$this->conn) {
+            throw new Exception("Connection failed: " . mysqli_connect_error());
         }
 
-        return $conn;
+        return $this->conn;
     }
 
-    public function close() {
-        \mysqli_close(); 
+    public function close()
+    {
+        $this->conn->close();
+        echo 'conexao encerrada';
     }
 }
