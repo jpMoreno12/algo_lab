@@ -16,7 +16,11 @@ class ResultController
             $body = $request->body;
 
             if (array_key_exists('id', $body) && array_key_exists('num', $body)) {
-                return $this->service->create($request->body);
+                $runned = $this->service->execute($request->body);
+                
+                if(!$runned) return "Algo deu errado! Tente Novamente!";
+                
+                return $runned['success']['message'];
             }
 
             return 'impossivel fazer request';
